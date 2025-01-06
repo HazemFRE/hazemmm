@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> document </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        select {
+            font-size: 18px;
+            padding: 5px;
+        }
+
+        .flag {
+            margin-top: 20px;
+            width: 300px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="countrySelector" onchange="changeFlag()">
+        <option value="jordan">Jordan</option>
+        <option value="syria">Syria</option>
+        <option value="palestine">Palestine</option>
+    </select>
+    <div id="flag" class="flag"
+        style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Flag_of_Jordan.svg/512px-Flag_of_Jordan.svg.png');">
+    </div>
+
+    <script>
+        function changeFlag() {
+            const selector = document.getElementById('countrySelector');
+            const flagDiv = document.getElementById('flag');
+            const selectedCountry = selector.value;
+
+            let flagUrl = '';
+
+            switch (selectedCountry) {
+                case 'jordan':
+                    flagUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5LyGmSiKz6HZ4BTEYes0-XK16vvHpsIqIHg&s';
+                    break;
+                case 'syria':
+                    flagUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Flag_of_Syria_%281930%E2%80%931958%2C_1961%E2%80%931963%29.svg/1200px-Flag_of_Syria_%281930%E2%80%931958%2C_1961%E2%80%931963%29.svg.png';
+                    break;
+                case 'palestine':
+                    flagUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_Palestine.svg/640px-Flag_of_Palestine.svg.png';
+                    break;
+                default:
+                    flagUrl = '';
+            }
+
+            flagDiv.style.backgroundImage = `url('${flagUrl}')`;
+        }
+    </script>
+</body>
+
+</html>

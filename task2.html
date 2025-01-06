@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go to top</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 2000px; 
+      background-color: #f4f4f4;
+      direction: rtl;
+    }
+
+    header {
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf8devTgXg2u9xBJ70xUdhBCa_YLbsJVrbuA&s');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 100%; 
+      max-width: 800px; 
+      margin: 0 auto; /
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .content {
+      padding: 20px;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-top: -50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content h2 {
+      color: black; 
+      margin-top: 20px;
+    }
+
+    .content ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .content ul li {
+      background-color: #f9f9f9;
+      margin: 10px 0;
+      padding: 10px;
+      border-left: 5px solid #007bff;
+      border-radius: 4px;
+    }
+
+    .content pre {
+      background-color: #f4f4f4;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+
+    #scrollToTopBtn {
+      display: none; 
+      position: fixed;
+      bottom: 20px; 
+      left: 20px; 
+      background-color: #007bff; 
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+      z-index: 1000; 
+      margin-left: 23%;
+    }
+
+    #scrollToTopBtn:hover {
+      background-color: #0056b3; 
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1> Hellooooooooooo </h1>
+  </header>
+
+ 
+  <button id="scrollToTopBtn" title="Go to top">↑</button>
+
+  <div class="content">
+    <p>Create React App with SSR and Service Worker</p>
+    <p>CRA service worker caches index.html and serves the cache instead of requesting it from the server. It breaks server side rendering and in this post I'm going to fix it.</p>
+    
+    <h2>Index</h2>
+    <ul>
+      <li>Problem in depth: CRA adds build script to package.json, which in turn calls react-scripts build. Now, that command puts a production version of the app in build/ folder and then adds service-worker.js file to it. That file contains instructions to cache everything inside the build/ folder, including index.html. When a user returns to the website, service worker will...</li>
+      <li>Why not just disable: Disabling the service worker might seem like an easy solution, but it removes the benefits of caching and offline functionality.</li>
+      <li>How to fix: The solution involves modifying the service worker configuration to exclude index.html from caching.</li>
+      <li>Verifying that it works: Test the application to ensure that SSR works as expected.</li>
+      <li>What about routing?: Ensure that routing works correctly with SSR and the modified service worker.</li>
+    </ul>
+
+    <h2>Problem in depth</h2>
+    <p>
+      CRA adds build script to package.json, which in turn calls react-scripts build:
+    </p>
+    <h2>Why not just disable</h2>
+    <p>
+    <h2>How to fix</h2>
+    <p>
+      The solution involves modifying the service worker configuration to exclude index.html from caching. This can be done by updating the Workbox configuration file (workbox-cli-config.js) and the service worker logic (service-worker.js).
+    </p>
+
+    <h2>Client</h2>
+    <p>
+      The client-side code needs to be adjusted to handle SSR properly. This includes updating the package.json file to include the necessary scripts and ensuring that the client-side code works seamlessly with the server-side rendering logic.
+    </p>
+
+    <h2>client/package.json</h2>
+    <p>
+      Update the package.json file to include the necessary scripts for building and running the application with SSR. This includes adding scripts for building the server-side code and running the server.
+    </p>
+
+    <h2>client/workbox-cli-config.js</h2>
+   
+    <h2>client/src/service-worker.js</h2>
+    <p>
+      Modify the service worker logic to handle SSR. This includes updating the service worker to exclude index.html from caching and ensuring that the service worker works correctly with the server-side rendering logic.
+    </p>
+
+    <h2>Verifying that it works</h2>
+    <p>
+      Test the application to ensure that SSR works as expected. This includes testing the application with and without the service worker to ensure that the caching logic works correctly and that the application performs well.
+    </p>
+
+    <h2>What about routing?</h2>
+    <p>
+      Ensure that routing works correctly with SSR and the modified service worker. This includes testing the application's routing logic to ensure that it works correctly with server-side rendering and that the service worker does not interfere with the routing logic.
+    </p>
+
+    <pre>
+      <code>
+        function add(a, b) {
+          return a + b;
+        }
+        console.log(add(5, 3));
+      </code>
+    </pre>
+  </div>
+
+  <script>
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+    window.onscroll = function() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopBtn.style.display = "block";
+      } else {
+        scrollToTopBtn.style.display = "none";
+      }
+    };
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' 
+      });
+    });
+  </script>
+</body>
+</html>
